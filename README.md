@@ -26,4 +26,4 @@ O principal objeto do app é auxiliar o motorista e ter maior controle dos seus 
 
 O projeto visa futuramente realizar a analise de preços entre os postos de combustiveis na cidade do usuário e assim lhe permitir escolher a opção o maior qualidade e com o preço mais acessivel ao cliente, além de ranquear os postos pela qualidade de seu produto.
 
-[Repositorio no GitHub]([https://](https://github.com/thainaviadroski/projeto_ephesto))
+[Repositorio no GitHub](https://github.com/thainaviadroski/projeto_ephesto)
