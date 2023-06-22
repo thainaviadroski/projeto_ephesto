@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_ephesto/page/login.dart';
+import 'package:project_ephesto/page/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +11,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(body: Login())
+      title: "My Car",
+      theme: ThemeData(
+        primarySwatch: Colors.amber
+      ),
+      initialRoute: "/splash",
+      routes: {
+        '/splash': (_) => const Splash(),
+      },
     );
   }
 }
