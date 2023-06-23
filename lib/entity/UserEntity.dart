@@ -6,6 +6,7 @@ class UserEntity {
 
   UserEntity();
 
+
   UserEntity.withData({
     required this.id,
     this.nomeCompleto,

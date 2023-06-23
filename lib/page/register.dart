@@ -2,6 +2,10 @@
 
 import 'package:flutter/material.dart';
 
+
+import '../dao/UserDao.dart';
+import '../entity/UserEntity.dart';
+
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
 
@@ -19,6 +23,9 @@ class RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Novo Usuario"),
+      ),
         body: Center(
       child: Padding(
           padding: const EdgeInsets.all(8),
@@ -90,15 +97,15 @@ class RegisterState extends State<Register> {
 
   ElevatedButton btnRegister(String nome, String email, String pass) {
     return ElevatedButton(
-      onPressed: () {
-        // ignore: avoid_print
-        print(nome);
-        // ignore: avoid_print
-        print(email);
-        // ignore: avoid_print
-        print(pass);
+      onPressed: () async {
+        UserEntity user = UserEntity();
+        user.email = email;
+        user.nomeCompleto = nome;
+        user.senha = pass;
+        int id = await UserEntityDao().insertUser(user);
 
-        // Call method save in db
+        // ignore: avoid_print
+        print(id);
       },
       child: const Text("Cadastre-se"),
     );

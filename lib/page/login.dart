@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:project_ephesto/components/buttons/btnForgotMyPassword.dart';
+import 'package:project_ephesto/dao/UserDao.dart';
 
-import '../components/buttons/btnLogin.dart';
 import '../components/buttons/btnRegister.dart';
+import '../entity/UserEntity.dart';
+import 'car.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -32,12 +34,27 @@ class LoginState extends State<Login> {
               ),
               frmEmail(),
               frmPassword(),
-              btnLogin(context),
+              btnLogin(email, pass),
               btnRegister(context),
               btnForgotMyPassword(context)
             ],
           )),
     ));
+  }
+
+  ElevatedButton btnLogin(String email, String pass) {
+    return ElevatedButton(
+      onPressed: () async {
+        UserEntity? user = await UserEntityDao().login(email, pass);
+        if (user != null) {
+          // ignore: use_build_context_synchronously
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return Car(idUser: user.id!);
+          }));
+        }
+      },
+      child: const Text("Acessar"),
+    );
   }
 
   TextFormField frmEmail() {
